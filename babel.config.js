@@ -8,9 +8,8 @@ module.exports = {
 			}
 		}]
 	],
-	"plugins": [
-		[
-			"transform-class-properties",
-			{ "spec": true }]
-	]
+	"plugins": [[
+		"transform-class-properties",
+		{ "spec": true }
+	]]
 }
