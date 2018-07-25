@@ -76,7 +76,7 @@ module.exports = ( env = 'development' ) => {
 					loader: 'file-loader',
 					options: {
 						name: '[name].css',
-						outputPath: `./css`,
+						outputPath: './css',
 						sourceMap: true,
 					}
 				}, {
@@ -114,6 +114,15 @@ module.exports = ( env = 'development' ) => {
 					options: babelConfig,
 				}],
 				exclude: /node_modules/
+			}, {
+				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				use: [{
+					loader: 'file-loader',
+					options: {
+						name: '[name].[ext]',
+						outputPath: '../fonts/'
+					}
+				}]
 			}],
 		}
 	}
