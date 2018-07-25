@@ -1,6 +1,6 @@
 {
   "name": "@flickerbox/build",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Better builds, building better websites",
   "main": "index.js",
   "bin": {
@@ -30,7 +30,7 @@
     "npm": ">=6.0.0"
   },
   "dependencies": {
-    "@flickerbox/fabric": "4.0.1",
+    "@flickerbox/fabric": "4.0.2",
     "@flickerbox/pacnav": "2.0.1",
     "@flickerbox/tracker": "1.0.2",
     "autoprefixer": "^8.6.0",
