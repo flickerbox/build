@@ -120,7 +120,7 @@ module.exports = ( env = 'development' ) => {
 					loader: 'file-loader',
 					options: {
 						name: '[name].[ext]',
-						outputPath: '../fonts/'
+						outputPath: './fonts'
 					}
 				}]
 			}],
