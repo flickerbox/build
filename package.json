@@ -30,7 +30,7 @@
     "npm": ">=6.0.0"
   },
   "dependencies": {
-    "@flickerbox/fabric": "4.0.5",
+    "@flickerbox/fabric": "4.0.6",
     "@flickerbox/pacnav": "2.0.4",
     "@flickerbox/tracker": "1.0.2",
     "autoprefixer": "^8.6.0",
