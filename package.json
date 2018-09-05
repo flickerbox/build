@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@flickerbox/fabric": "4.0.8",
-    "@flickerbox/pacnav": "2.0.4",
+    "@flickerbox/pacnav": "2.0.5",
     "@flickerbox/tracker": "1.0.2",
     "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.3",
