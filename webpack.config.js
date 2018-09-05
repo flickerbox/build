@@ -115,7 +115,7 @@ module.exports = ( env = 'development' ) => {
 					options: babelConfig,
 				}],
 				exclude: [
-					babelEnvDeps.exclude()
+					/node_modules(?!\/\@flickerbox)/,
 				],
 			}, {
 				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
