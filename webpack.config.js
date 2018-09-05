@@ -1,3 +1,4 @@
+const babelEnvDeps = require('webpack-babel-env-deps');
 const path = require('path');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const GlobImporter = require('node-sass-glob-importer');
@@ -113,7 +114,9 @@ module.exports = ( env = 'development' ) => {
 					loader: 'babel-loader',
 					options: babelConfig,
 				}],
-				exclude: /node_modules/
+				exclude: [
+					babelEnvDeps.exclude()
+				],
 			}, {
 				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 				use: [{
