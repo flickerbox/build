@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const GlobImporter = require('node-sass-glob-importer');
 const WebpackNotifierPlugin = require('webpack-notifier');
@@ -6,26 +7,6 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const babelConfig = require('./babel.config');
 
 module.exports = ( env = 'development' ) => {
-
-	let css_sourcemaps = false
-
-	let active_plugins = [
-		new VueLoaderPlugin(),
-		new WebpackNotifierPlugin({
-			title: 'Flickerbox Build Runner',
-			contentImage: path.join(__dirname, 'notifier.png'),
-			alwaysNotify: true,
-			skipFirstNotification: false,
-			excludeWarnings: false
-		})
-	];
-
-	if( env === 'development' ) {
-		css_sourcemaps = 'inline'
-		active_plugins.push(
-			new DashboardPlugin(),
-		);
-	}
 
 	return {
 
@@ -40,7 +21,20 @@ module.exports = ( env = 'development' ) => {
 			filename: 'js/[name].js',
 		},
 
-		plugins: active_plugins,
+		plugins: [
+			new VueLoaderPlugin(),
+			new WebpackNotifierPlugin({
+				title: 'Flickerbox Build Runner',
+				contentImage: path.join(__dirname, 'notifier.png'),
+				alwaysNotify: true,
+				skipFirstNotification: false,
+				excludeWarnings: false
+			}),
+			new webpack.DefinePlugin({
+				PRODUCTION: JSON.stringify(env === 'production'),
+			}),
+			( env === 'development' && new DashboardPlugin() ),
+		],
 
 		devtool: 'source-map',
 
