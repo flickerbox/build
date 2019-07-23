@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const DashboardPlugin = require('webpack-dashboard/plugin');
 const GlobImporter = require('node-sass-glob-importer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
@@ -33,7 +32,6 @@ module.exports = ( env = 'development' ) => {
 			new webpack.DefinePlugin({
 				PRODUCTION: JSON.stringify(env === 'production'),
 			}),
-			( env === 'development' && new DashboardPlugin() ),
 		],
 
 		devtool: 'source-map',
