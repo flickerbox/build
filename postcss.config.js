@@ -148,7 +148,8 @@ module.exports = ( { options } ) => ({
 		 * https://github.com/browserslist/browserslist#best-practices
 		 */
 		autoprefixer: {
-			"browsers": ["> 15%", "ie 8-11"]
+			"browsers": ["> 15%", "ie 8-11"],
+			"grid": true,
 		},
 		/**
 		 * http://cssnano.co/guides/optimisations/
