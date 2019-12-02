@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const GlobImporter = require('node-sass-glob-importer');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const babelConfig = require('./babel.config');
@@ -84,6 +85,7 @@ module.exports = ( env = 'development' ) => {
 					loader: 'sass-loader',
 					options: {
 						sourceMap: true,
+						importer: GlobImporter(),
 					}
 				}]
 			}, {
