@@ -109,6 +109,9 @@ module.exports = ( env = 'development' ) => {
 					/node_modules(?!\/\@flickerbox)/,
 				],
 			}, {
+				test: /\.svg$/,
+				loader: 'vue-svg-loader',
+			}, {
 				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
 				use: [{
 					loader: 'file-loader',
