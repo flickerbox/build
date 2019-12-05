@@ -46,10 +46,6 @@ module.exports = ( env = 'development' ) => {
 		},
 
 		module: {
-			preloaders: [{
-				test: /\.scss$/,
-				loader: 'import-glob',
-			}],
 			rules: [{
 				test: /\.css$/,
 				use: [{
@@ -60,6 +56,10 @@ module.exports = ( env = 'development' ) => {
 			}, {
 				test: /\.sass$/,
 				use: [{
+					test: /\.scss$/,
+					loader: 'import-glob',
+					enforce: 'pre',
+				}, {
 					loader: 'vue-style-loader',
 				}, {
 					loader: 'css-loader',
@@ -69,6 +69,10 @@ module.exports = ( env = 'development' ) => {
 			}, {
 				test: /\.scss$/,
 				use: [{
+					test: /\.scss$/,
+					loader: 'import-glob',
+					enforce: 'pre',
+				}, {
 					loader: 'file-loader',
 					options: {
 						name: '[name].css',
