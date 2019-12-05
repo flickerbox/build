@@ -59,6 +59,13 @@ module.exports = ( env = 'development' ) => {
 			}, {
 				test: /\.s[ac]ss$/,
 				use: [{
+					loader: 'file-loader',
+					options: {
+						name: '[name].css',
+						outputPath: './css',
+						sourceMap: true,
+					},
+				}, {
 					loader: 'postcss-loader',
 					options: {
 						config: {
@@ -69,18 +76,9 @@ module.exports = ( env = 'development' ) => {
 						},
 					},
 				}, {
-					loader: 'vue-style-loader',
-				}, {
 					loader: 'css-loader',
 				}, {
 					loader: 'sass-loader',
-				}, {
-					loader: 'file-loader',
-					options: {
-						name: '[name].css',
-						outputPath: './css',
-						sourceMap: true,
-					},
 				}]
 			}, {
 				test: /\.vue$/,
