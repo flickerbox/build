@@ -55,7 +55,7 @@ module.exports = ( env = 'development' ) => {
 				}]
 			}, {
 				test: /\.sass$/,
-				loader: 'import-glob',
+				loader: 'import-glob-loader',
 				enforce: 'pre',
 			}, {
 				test: /\.sass$/,
@@ -68,7 +68,7 @@ module.exports = ( env = 'development' ) => {
 				}]
 			}, {
 				test: /\.scss$/,
-				loader: 'import-glob',
+				loader: 'import-glob-loader',
 				enforce: 'pre',
 			}, {
 				test: /\.scss$/,
@@ -88,12 +88,6 @@ module.exports = ( env = 'development' ) => {
 								minify: (env === 'production'),
 							}
 						}
-					}
-				}, {
-					loader: 'sass-loader',
-					options: {
-						sourceMap: true,
-						importer: GlobImporter(),
 					}
 				}]
 			}, {
