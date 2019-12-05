@@ -62,7 +62,6 @@
     "react": "16.8.0",
     "react-dom": "16.8.0",
     "sass": "^1.23.7",
-    "sass-globbing": "^1.0.0-alpha1",
     "sass-loader": "^8.0.0",
     "style-loader": "^0.21.0",
     "stylelint": "9.3.0",
@@ -75,6 +74,7 @@
     "webpack": "4.33.0",
     "webpack-cli": "3.3.2",
     "webpack-dashboard": "3.0.7",
+    "webpack-import-glob": "^2.0.0",
     "webpack-merge": "4.2.1",
     "webpack-notifier": "1.7.0"
   }

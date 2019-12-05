@@ -46,6 +46,10 @@ module.exports = ( env = 'development' ) => {
 		},
 
 		module: {
+			preloaders: [{
+				test: /\.scss$/,
+				loader: 'import-glob',
+			}],
 			rules: [{
 				test: /\.css$/,
 				use: [{
