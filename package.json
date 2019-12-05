@@ -57,7 +57,7 @@
     "ignore-assets-webpack-plugin": "^2.0.1",
     "path": "^0.12.7",
     "postcss-cli": "^5.0.0",
-    "postcss-sass-loader": "^1.1.0",
+    "postcss-loader": "^3.0.0",
     "react": "16.8.0",
     "react-dom": "16.8.0",
     "sass": "^1.23.7",

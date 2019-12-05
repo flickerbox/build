@@ -59,6 +59,16 @@ module.exports = ( env = 'development' ) => {
 			}, {
 				test: /\.s[ac]ss$/,
 				use: [{
+					loader: 'postcss-loader',
+					options: {
+						config: {
+							path: path.resolve(__dirname, 'postcss.config.js'),
+							ctx: {
+								minify: (env === 'production'),
+							},
+						},
+					},
+				}, {
 					loader: 'vue-style-loader',
 				}, {
 					loader: 'css-loader',
@@ -70,16 +80,6 @@ module.exports = ( env = 'development' ) => {
 						name: '[name].css',
 						outputPath: './css',
 						sourceMap: true,
-					},
-				}, {
-					loader: 'postcss-sass-loader',
-					options: {
-						config: {
-							path: path.resolve(__dirname, 'postcss.config.js'),
-							ctx: {
-								minify: (env === 'production'),
-							},
-						},
 					},
 				}]
 			}, {
