@@ -53,41 +53,34 @@ module.exports = ( env = 'development' ) => {
 					loader: 'css-loader',
 				}]
 			}, {
-				test: /\.sass$/,
+				test: /\.s[ac]ss$/,
 				loader: 'import-glob-loader',
 				enforce: 'pre',
 			}, {
-				test: /\.sass$/,
+				test: /\.s[ac]ss$/,
 				use: [{
 					loader: 'vue-style-loader',
 				}, {
 					loader: 'css-loader',
 				}, {
 					loader: 'sass-loader',
-				}]
-			}, {
-				test: /\.scss$/,
-				loader: 'import-glob-loader',
-				enforce: 'pre',
-			}, {
-				test: /\.scss$/,
-				use: [{
+				}, {
 					loader: 'file-loader',
 					options: {
 						name: '[name].css',
 						outputPath: './css',
 						sourceMap: true,
-					}
+					},
 				}, {
-					loader: 'postcss-loader',
+					loader: 'postcss-sass-loader',
 					options: {
 						config: {
 							path: path.resolve(__dirname, 'postcss.config.js'),
 							ctx: {
 								minify: (env === 'production'),
-							}
-						}
-					}
+							},
+						},
+					},
 				}]
 			}, {
 				test: /\.vue$/,
