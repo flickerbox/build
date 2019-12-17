@@ -55,6 +55,7 @@
     "file-loader": "^1.1.11",
     "fs": "0.0.2",
     "ignore-assets-webpack-plugin": "^2.0.1",
+    "import-glob-loader": "1.1.0",
     "path": "^0.12.7",
     "postcss-cli": "^5.0.0",
     "postcss-loader": "^3.0.0",
