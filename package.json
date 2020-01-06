@@ -30,8 +30,8 @@
     "npm": ">=6.0.0"
   },
   "dependencies": {
-    "@flickerbox/fabric": "https://github.com/flickerbox/fabric/tarball/v20.0.0-alpha",
-    "@flickerbox/pacnav": "https://github.com/flickerbox/pacnav/tarball/v20.0.0-alpha",
+    "@flickerbox/fabric": "20.0.6",
+    "@flickerbox/pacnav": "20.0.6",
     "@flickerbox/tracker": "1.0.2",
     "autoprefixer": "^8.6.0",
     "babel-core": "^6.26.3",
