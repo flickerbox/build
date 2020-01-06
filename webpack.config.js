@@ -1,31 +1,10 @@
 const path = require('path');
-const DashboardPlugin = require('webpack-dashboard/plugin');
-const GlobImporter = require('node-sass-glob-importer');
+const webpack = require('webpack');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 const babelConfig = require('./babel.config');
 
 module.exports = ( env = 'development' ) => {
-
-	let css_sourcemaps = false
-
-	let active_plugins = [
-		new VueLoaderPlugin(),
-		new WebpackNotifierPlugin({
-			title: 'Flickerbox Build Runner',
-			contentImage: path.join(__dirname, 'notifier.png'),
-			alwaysNotify: true,
-			skipFirstNotification: false,
-			excludeWarnings: false
-		})
-	];
-
-	if( env === 'development' ) {
-		css_sourcemaps = 'inline'
-		active_plugins.push(
-			new DashboardPlugin(),
-		);
-	}
 
 	return {
 
@@ -40,7 +19,19 @@ module.exports = ( env = 'development' ) => {
 			filename: 'js/[name].js',
 		},
 
-		plugins: active_plugins,
+		plugins: [
+			new VueLoaderPlugin(),
+			new WebpackNotifierPlugin({
+				title: 'Flickerbox Build Runner',
+				contentImage: path.join(__dirname, 'notifier.png'),
+				alwaysNotify: true,
+				skipFirstNotification: false,
+				excludeWarnings: false
+			}),
+			new webpack.DefinePlugin({
+				PRODUCTION: JSON.stringify(env === 'production'),
+			}),
+		],
 
 		devtool: 'source-map',
 
@@ -62,23 +53,18 @@ module.exports = ( env = 'development' ) => {
 					loader: 'css-loader',
 				}]
 			}, {
-				test: /\.sass$/,
-				use: [{
-					loader: 'vue-style-loader',
-				}, {
-					loader: 'css-loader',
-				}, {
-					loader: 'sass-loader',
-				}]
+				test: /\.s[ac]ss$/,
+				loader: 'import-glob-loader',
+				enforce: 'pre',
 			}, {
-				test: /\.scss$/,
+				test: /\.s[ac]ss$/,
 				use: [{
 					loader: 'file-loader',
 					options: {
 						name: '[name].css',
 						outputPath: './css',
 						sourceMap: true,
-					}
+					},
 				}, {
 					loader: 'postcss-loader',
 					options: {
@@ -86,15 +72,11 @@ module.exports = ( env = 'development' ) => {
 							path: path.resolve(__dirname, 'postcss.config.js'),
 							ctx: {
 								minify: (env === 'production'),
-							}
-						}
-					}
+							},
+						},
+					},
 				}, {
 					loader: 'sass-loader',
-					options: {
-						sourceMap: true,
-						importer: GlobImporter()
-					}
 				}]
 			}, {
 				test: /\.vue$/,
@@ -117,7 +99,10 @@ module.exports = ( env = 'development' ) => {
 					/node_modules(?!\/\@flickerbox)/,
 				],
 			}, {
-				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				test: /\.svg$/,
+				loader: 'vue-svg-loader',
+			}, {
+				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
 				use: [{
 					loader: 'file-loader',
 					options: {
