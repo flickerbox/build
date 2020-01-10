@@ -5,7 +5,7 @@ const ignoreAssetsPlugin = require('ignore-assets-webpack-plugin')
 const notifier = require('webpack-notifier')
 const path = require('path')
 const vueLoader = require('vue-loader/lib/plugin')
-const webpack = require('webpak')
+const webpack = require('webpack')
 
 const environment = process.env.NODE_ENV
 
@@ -28,7 +28,7 @@ module.exports = {
     }),
     new notifier({
       title: 'Flickerbox Build',
-      contentImage: path.join(__dirname, notifier_logo),
+      contentImage: path.join(__dirname, 'notifier.png'),
       alwaysNotify: true,
       skipFirstNotification: false,
       excludeWarnings: false,
@@ -65,7 +65,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].css',
-              outputPath: '../css',
+              outputPath: './css',
               sourceMap: true
             }
           },
