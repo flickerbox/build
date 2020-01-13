@@ -87,7 +87,7 @@ module.exports = ({options}) => ({
         "selector-pseudo-element-no-unknown": true,
         "selector-type-case": "lower",
         "string-no-newline": true,
-        "string-quotes": "single",
+        // "string-quotes": "double",
         "time-min-milliseconds": 0,
         "unit-case": "lower",
         "unit-no-unknown": true,

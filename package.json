@@ -11,7 +11,7 @@
     "delete-maps": "find ./ -name '*.map' -delete",
     "dev": "npm run development",
     "dev-dashboard": "npm run development-dashboard",
-    "development": "NODE_ENV=development webpack --config=config/webpack.dev.js --info-verbosity verbose --progress",
+    "development": "NODE_ENV=development webpack --config=config/webpack.dev.js --info-verbosity verbose --progress --watch",
     "development-dashboard": "webpack-dashboard -- npm run development",
     "help": "flickerbox-build -- help",
     "prod": "npm run production",
