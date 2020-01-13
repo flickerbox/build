@@ -83,9 +83,9 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              precision: 10,
               sourceMap: ('development' === environment),
               sassOptions: {
+                precision: 10,
                 importer: globImporter()
               }
             }
