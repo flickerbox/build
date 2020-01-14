@@ -43,8 +43,6 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
-      'fabric': require('@flickerbox/fabric/webpack.manifest').sassDir,
-      'pacnav': require('@flickerbox/pacnav/webpack.manifest').sassDir,
     },
     extensions: ['*', '.js', '.vue', '.json'],
   },
