@@ -44,7 +44,7 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
     },
-    extensions: ['*', '.js', '.vue', '.json'],
+    extensions: ['*', '.js', '.json', '.jsx', '.vue'],
   },
 
   module: {
@@ -103,7 +103,7 @@ module.exports = {
         }]
       },
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         use: [{
           loader: 'babel-loader',
           options: babelConfig,

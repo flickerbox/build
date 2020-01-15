@@ -11,6 +11,12 @@ module.exports = {
                 "corejs": "3.0.0",
             }
         ],
+		[
+            "@babel/preset-react",
+            {
+              development: process.env.NODE_ENV === "development",
+            },
+        ],
     ],
     plugins: [
         '@babel/plugin-transform-object-assign',
