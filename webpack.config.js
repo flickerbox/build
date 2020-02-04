@@ -1,12 +1,13 @@
-const babelConfig = require('./babel.config')
-const dashboard = require('webpack-dashboard/plugin')
-const ignoreAssetsPlugin = require('ignore-assets-webpack-plugin')
-const notifier = require('webpack-notifier')
-const path = require('path')
-const vueLoader = require('vue-loader/lib/plugin')
-const webpack = require('webpack')
+const path = require('path');
+const babelConfig = require('./babel.config');
 
-const environment = process.env.NODE_ENV
+const Dashboard = require('webpack-dashboard/plugin');
+const IgnoreAssetsPlugin = require('ignore-assets-webpack-plugin');
+const Notifier = require('webpack-notifier');
+const VueLoader = require('vue-loader/lib/plugin');
+const Webpack = require('webpack');
+
+const environment = process.env.NODE_ENV;
 
 module.exports = {
 
@@ -20,19 +21,19 @@ module.exports = {
   },
 
   plugins: [
-    new dashboard(),
-    new vueLoader(),
-    new ignoreAssetsPlugin({
+    new Dashboard(),
+    new VueLoader(),
+    new IgnoreAssetsPlugin({
       ignore: ['js/css.js', 'js/css.js.map']
     }),
-    new notifier({
+    new Notifier({
       title: 'Flickerbox Build',
-      contentImage: path.join(__dirname, 'notifier.png'),
+      contentImage: path.join(__dirname, 'icon.png'),
       alwaysNotify: true,
       skipFirstNotification: false,
       excludeWarnings: false,
     }),
-    new webpack.DefinePlugin({
+    new Webpack.DefinePlugin({
       PRODUCTION: JSON.stringify('production' === environment),
     }),
   ],
@@ -80,6 +81,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
+              implementation: require('sass'),
               sourceMap: ('development' === environment),
               sassOptions: {
                 precision: 10,
