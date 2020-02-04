@@ -1,6 +1,5 @@
 const babelConfig = require('./babel.config')
 const dashboard = require('webpack-dashboard/plugin')
-const globImporter = require('node-sass-glob-importer')
 const ignoreAssetsPlugin = require('ignore-assets-webpack-plugin')
 const notifier = require('webpack-notifier')
 const path = require('path')
@@ -84,9 +83,11 @@ module.exports = {
               sourceMap: ('development' === environment),
               sassOptions: {
                 precision: 10,
-                importer: globImporter()
               }
             }
+          },
+          {
+            loader: 'import-glob-loader',
           },
         ]
       },
@@ -126,7 +127,7 @@ module.exports = {
           }
         }]
       },
-    ]
+    ],
   },
 
 };
