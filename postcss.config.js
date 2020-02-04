@@ -19,7 +19,6 @@ module.exports = ({options}) => ({
         "block-closing-brace-empty-line-before": "never",
         "block-no-empty": true,
         "color-hex-case": "lower",
-        "color-hex-length": "short",
         "color-named": "never",
         "color-no-invalid-hex": true,
         "comment-whitespace-inside": "always",
