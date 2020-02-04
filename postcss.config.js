@@ -4,10 +4,11 @@ const isDevelopment = 'development' === environment
 module.exports = ({options}) => ({
 
   plugins: {
+
+    /**
+     *	https://stylelint.io/user-guide/rules/
+     */
     stylelint: {
-      /**
-       *	https://stylelint.io/user-guide/rules/
-       */
       "rules": {
         "at-rule-blacklist": [],
         "at-rule-name-case": "lower",
@@ -43,13 +44,11 @@ module.exports = ({options}) => ({
         "no-empty-source": true,
         "no-extra-semicolons": true,
         "no-invalid-double-slash-comments": true,
-        "no-missing-end-of-source-newline": true,
         "number-max-precision": 10,
         "number-no-trailing-zeros": true,
         "property-case": "lower",
         "property-no-unknown": true,
         "selector-attribute-brackets-space-inside": "never",
-        "selector-attribute-quotes": "always",
         "selector-descendant-combinator-no-non-space": true,
         "selector-list-comma-newline-before": "never-multi-line",
         "selector-max-empty-lines": 0,
@@ -74,10 +73,10 @@ module.exports = ({options}) => ({
         ...isDevelopment && {
           "at-rule-name-space-after": "always",
           "at-rule-semicolon-space-before": "never",
-          "block-closing-brace-newline-after": "always",
-          "block-closing-brace-space-after": "always-single-line",
-          "block-closing-brace-space-before": "always",
-          "block-opening-brace-newline-after": "always",
+          "block-closing-brace-newline-after": "always-multi-line",
+          "block-closing-brace-newline-before": "always-multi-line",
+          "block-closing-brace-space-before": "always-single-line",
+          "block-opening-brace-newline-after": "always-multi-line",
           "block-opening-brace-space-after": "always-single-line",
           "block-opening-brace-space-before": "always",
           "color-hex-length": "long",
@@ -107,44 +106,46 @@ module.exports = ({options}) => ({
         }
       }
     },
+
+    /**
+     * https://github.com/postcss/autoprefixer
+     */
     autoprefixer: {
       "grid": true,
     },
+
     /**
      * http://cssnano.co/guides/optimisations/
      */
-    cssnano: (
-      options.minify === true ?
-        {
-          "autoprefixer": false,
-          "calc": true,
-          "colormin": true,
-          "cssDeclarationSorter": true,
-          "discardComments": true,
-          "discardDuplicates": true,
-          "discardEmpty": true,
-          "discardOverridden": true,
-          "mergeLonghand": true,
-          "mergeRules": true,
-          "minifyGradients": true,
-          "minifyParams": true,
-          "minifySelectors": true,
-          "normalizeCharset": true,
-          "normalizeDisplayValues": true,
-          "normalizePositions": true,
-          "normalizeRepeatStyle": true,
-          "normalizeString": true,
-          "normalizeUnicode": true,
-          "normalizeUrl": true,
-          "normalizeWhitespace": true,
-          "orderedValues": true,
-          "reduceInitial": true,
-          "reduceTransforms": true,
-          "safe": true,
-          "svgo": true,
-          "uniqueSelectors": true,
-        }
-        : false
-    )
-  }
+    cssnano: !!options.minify && {
+      "autoprefixer": false,
+      "calc": true,
+      "colormin": true,
+      "cssDeclarationSorter": true,
+      "discardComments": true,
+      "discardDuplicates": true,
+      "discardEmpty": true,
+      "discardOverridden": true,
+      "mergeLonghand": true,
+      "mergeRules": true,
+      "minifyGradients": true,
+      "minifyParams": true,
+      "minifySelectors": true,
+      "normalizeCharset": true,
+      "normalizeDisplayValues": true,
+      "normalizePositions": true,
+      "normalizeRepeatStyle": true,
+      "normalizeString": true,
+      "normalizeUnicode": true,
+      "normalizeUrl": true,
+      "normalizeWhitespace": true,
+      "orderedValues": true,
+      "reduceInitial": true,
+      "reduceTransforms": true,
+      "safe": true,
+      "svgo": true,
+      "uniqueSelectors": true,
+    },
+
+  },
 })
