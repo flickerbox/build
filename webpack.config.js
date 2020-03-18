@@ -100,7 +100,15 @@ module.exports = ( env = 'development' ) => {
 				],
 			}, {
 				test: /\.svg$/,
-				loader: 'vue-svg-loader',
+				use: [
+					{
+						loader: 'babel-loader',
+						options: babelConfig,
+					},
+					{
+						loader: 'vue-svg-loader',
+					},
+				]
 			}, {
 				test: /\.(woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
 				use: [{
