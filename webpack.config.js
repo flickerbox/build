@@ -53,7 +53,7 @@ module.exports = {
         test: /\.css$/,
         use: [
           { loader: 'vue-style-loader' },
-          { loader: 'css-loader' }
+          { loader: 'css-loader', options: { url: false } }
         ]
       },
       {
