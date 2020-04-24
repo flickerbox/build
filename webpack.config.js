@@ -47,6 +47,10 @@ module.exports = {
     extensions: ['*', '.js', '.json', '.jsx', '.vue'],
   },
 
+  optimization: {
+		usedExports: true,
+	},
+
   module: {
     rules: [
       {
