@@ -47,13 +47,17 @@ module.exports = {
     extensions: ['*', '.js', '.json', '.jsx', '.vue'],
   },
 
+  optimization: {
+		usedExports: true,
+	},
+
   module: {
     rules: [
       {
         test: /\.css$/,
         use: [
           { loader: 'vue-style-loader' },
-          { loader: 'css-loader' }
+          { loader: 'css-loader', options: { url: false } }
         ]
       },
       {
@@ -124,6 +128,9 @@ module.exports = {
           },
           {
             loader: 'vue-svg-loader',
+            options: {
+              svgo: false,
+            },
           },
         ]
       },
