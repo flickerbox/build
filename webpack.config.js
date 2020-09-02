@@ -10,6 +10,8 @@ if ('production' === environment) {
 	config.devtool('source-map');
 }
 
+config.mode(environment);
+
 config.output
 	.path(path.resolve(__dirname))
 	.filename('js/[name].js');
