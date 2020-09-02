@@ -10,7 +10,7 @@ module.exports = ({options}) => ({
      */
     stylelint: {
       "rules": {
-        "at-rule-blacklist": [],
+        "at-rule-disallowed-list": [],
         "at-rule-name-case": "lower",
         "at-rule-name-newline-after": "always-multi-line",
         "at-rule-no-unknown": true,
@@ -22,7 +22,7 @@ module.exports = ({options}) => ({
         "color-named": "never",
         "color-no-invalid-hex": true,
         "comment-whitespace-inside": "always",
-        "comment-word-blacklist": [],
+        "comment-word-disallowed-list": [],
         "custom-property-empty-line-before": "never",
         "declaration-block-no-shorthand-property-overrides": true,
         "declaration-colon-newline-after": "always-multi-line",
