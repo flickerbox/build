@@ -1,6 +1,6 @@
 {
   "name": "@flickerbox/build",
-  "version": "20.6.0",
+  "version": "20.9.0",
   "description": "Flickerbox build module makes it easy to run webpack, babel, postcss, and more for a quality static resource build for your JS and CSS site assets.",
   "main": "index.js",
   "bin": {
@@ -90,9 +90,9 @@
     "vuex": "^3.4.0",
     "vuex-persistedstate": "^3.0.1",
     "webpack": "^4.43.0",
+    "webpack-chain": "^6.5.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
-    "webpack-merge": "4.2.2",
     "webpack-notifier": "^1.8.0"
   },
   "browserslist": [
