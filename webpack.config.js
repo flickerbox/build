@@ -90,11 +90,11 @@ config.module.rule('scss')
 		.options({
 			implementation: require('sass'),
 			sourceMap: ('development' === environment),
-			sassOptions: { precision: 10 },
+			sassOptions: {
+        importer: require('node-sass-glob-importer')(),
+        precision: 10,
+      },
 		})
-		.end()
-	.use('import-glob-loader')
-		.loader('import-glob-loader')
 		.end();
 
 config.module.rule('vue')
