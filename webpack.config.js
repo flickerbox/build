@@ -95,7 +95,33 @@ config.module.rule('scss')
         precision: 10,
       },
 		})
-		.end();
+    .end();
+
+config.module.rule('less')
+  .test(/\.less$/)
+  .use('file-loader')
+    .loader('file-loader')
+    .options({
+      name: '[name].css',
+      outputPath: './css',
+      sourceMap: true,
+    })
+    .end()
+  .use('postcss-loader')
+    .loader('postcss-loader')
+    .options({
+      config: {
+        path: path.resolve(__dirname, 'postcss.config.js'),
+        ctx: { minify: ('production' === process.env.NODE_ENV) },
+      },
+    })
+    .end()
+  .use('less-loader')
+    .loader('less-loader')
+    .options({
+      sourceMap: ('development' === process.env.NODE_ENV),
+    })
+    .end();
 
 config.module.rule('vue')
 	.test(/\.vue$/)
