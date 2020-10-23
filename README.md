@@ -10,7 +10,7 @@ module.exports = require('@flickerbox/build/webpack.config')
 	.entry('css')
 		.add('./src/sass/main.scss')
 		.end()
-	.entry('js')
+	.entry('main')
 		.add('./src/js/main.js')
 		.end()
 	.toConfig();
