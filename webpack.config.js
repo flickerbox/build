@@ -111,7 +111,7 @@ config.module.rule('less')
     .loader('postcss-loader')
     .options({
       config: {
-        path: path.resolve(__dirname, 'postcss.config.js'),
+        path: process.env.POSTCSS_CONFIG || path.resolve(__dirname, 'postcss.config.js'),
         ctx: { minify: ('production' === process.env.NODE_ENV) },
       },
     })
