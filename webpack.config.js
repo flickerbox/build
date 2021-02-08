@@ -32,20 +32,18 @@ config.optimization
 config.plugin('vue')
 	.use(require('vue-loader/lib/plugin'));
 
-config.plugin('ignore-assets')
-	.use(require('ignore-assets-webpack-plugin'), [{
-		ignore: [
-			'js/css.js',
-			'js/css.js.map',
-		],
-	}]);
+config.plugin('ignore-emit')
+	.use(require('ignore-emit-webpack-plugin'), [
+		'js/css.js',
+		'js/css.js.map',
+	]);
 
 config.plugin('notifier')
 	.use(require('webpack-notifier'), [{
 		title: 'Flickerbox Build',
 		contentImage: path.join(__dirname, 'icon.png'),
 		alwaysNotify: true,
-		skipFirstNotification: false,
+		skipFirstNotification: true,
 		excludeWarnings: false,
 	}]);
 

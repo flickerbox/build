@@ -1,6 +1,6 @@
 {
   "name": "@flickerbox/build",
-  "version": "20.11.1",
+  "version": "21.0.0",
   "description": "Flickerbox build module makes it easy to run webpack, babel, postcss, and more for a quality static resource build for your JS and CSS site assets.",
   "main": "index.js",
   "bin": {
@@ -10,13 +10,13 @@
     "commands": "npm run help",
     "delete-maps": "find ./ -name '*.map' -delete",
     "dev": "npm run development",
-    "development": "NODE_ENV=development parallel-webpack --config=config/webpack.config.js -p=3 --watch",
+    "development": "NODE_ENV=development flickerbox-build --config=config/webpack.config.js --watch",
     "font": "npm run fonts",
-    "fonts": "NODE_ENV=production webpack --config=config/webpack.font.js --info-verbosity verbose --progress",
-    "fonts-dev": "NODE_ENV=production webpack --config=config/webpack.font.js --info-verbosity verbose --progress --watch",
+    "fonts": "NODE_ENV=production flickerbox-build --config=config/webpack.font.js",
+    "fonts-dev": "NODE_ENV=production flickerbox-build --config=config/webpack.font.js --watch",
     "help": "flickerbox-build -- help",
     "prod": "npm run production",
-    "production": "NODE_ENV=production parallel-webpack --config=config/webpack.config.js --max-retries=2 --no-stats && npm run delete-maps",
+    "production": "NODE_ENV=production flickerbox-build --config=config/webpack.config.js && npm run delete-maps",
     "version-check": "flickerbox-build -- version-check",
     "watch": "npm run development"
   },
@@ -58,6 +58,7 @@
     "@babel/runtime": "^7.9.6",
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
+    "cli-progress": "^3.9.0",
     "commander": "^5.1.0",
     "config": "^3.3.1",
     "core-js": "^3.6.5",
@@ -68,7 +69,7 @@
     "fibers": "^5.0.0",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
-    "ignore-assets-webpack-plugin": "^2.0.1",
+    "ignore-emit-webpack-plugin": "^2.0.6",
     "less": "^3.12.2",
     "less-loader": "^7.0.1",
     "node-sass-glob-importer": "^5.3.2",
@@ -91,11 +92,12 @@
     "vue-template-compiler": "^2.6.11",
     "vuex": "^3.4.0",
     "vuex-persistedstate": "^3.0.1",
-    "webpack": "^4.43.0",
+    "webpack": "^4.46.0",
     "webpack-chain": "^6.5.1",
     "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0",
-    "webpack-notifier": "^1.8.0"
+    "webpack-notifier": "^1.8.0",
+    "worker-farm": "^1.7.0"
   },
   "browserslist": [
     "> 0.5%",
