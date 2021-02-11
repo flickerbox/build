@@ -32,6 +32,7 @@ const main = module.exports = opts => {
 	const argv = typeof opts.argv === 'undefined' ? process.argv : opts.argv;
 
   program.option('--config <config>', 'Path to the config file');
+  program.option('--processes <processes>', 'Number of cores for processes you\'d like to use');
   program.option('--progress', 'Print compilation progress in percentage');
   program.option('--watch', 'Enter watch mode, which rebuilds on file change.');
 

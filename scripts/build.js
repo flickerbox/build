@@ -14,6 +14,7 @@ let finishedWorkers = 0;
 const workerStats = {};
 const filename = path.basename(__filename);
 const numberOfCpus = require('os').cpus().length;
+const maxConcurrentWorkers = (numberOfCpus - 2 > 0) && numberOfCpus - 2 || 1
 
 const onFinishBuild = (index, stats) => {
   workerStats[index] = workerStats[index] || { finishedFirstBuild: false }
@@ -52,7 +53,7 @@ module.exports = ( { watch, ...options }, env ) => {
   }
 
   const workers = workerFarm(
-    { maxConcurrentWorkers: (numberOfCpus - 2 > 0) && numberOfCpus - 2 || 1 },
+    { maxConcurrentWorkers: options.processes < maxConcurrentWorkers && options.processes || maxConcurrentWorkers },
     require.resolve('../lib/child-worker.js')
   );
 
