@@ -6,11 +6,11 @@ const Webpack = require('webpack');
 const environment = process.env.NODE_ENV;
 const config = new Config();
 
-if ('production' === environment) {
+if ('development' === environment) {
 	config.devtool('source-map');
 }
 
-config.mode(environment);
+config.mode('production' === environment && 'production' || 'development');
 
 config.output
 	.path(path.resolve(__dirname))
@@ -71,7 +71,7 @@ config.module.rule('scss')
 		.options({
 			name: '[name].css',
 			outputPath: './css',
-			sourceMap: true,
+			sourceMap: ('development' === environment),
 		})
 		.end()
 	.use('postcss-loader')
@@ -102,7 +102,7 @@ config.module.rule('less')
     .options({
       name: '[name].css',
       outputPath: './css',
-      sourceMap: true,
+      sourceMap: ('development' === environment),
     })
     .end()
   .use('postcss-loader')
@@ -110,14 +110,14 @@ config.module.rule('less')
     .options({
       config: {
         path: process.env.POSTCSS_CONFIG || path.resolve(__dirname, 'postcss.config.js'),
-        ctx: { minify: ('production' === process.env.NODE_ENV) },
+        ctx: { minify: ('production' === environment) },
       },
     })
     .end()
   .use('less-loader')
     .loader('less-loader')
     .options({
-      sourceMap: ('development' === process.env.NODE_ENV),
+      sourceMap: ('development' === environment),
     })
     .end();
 
