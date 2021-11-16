@@ -77,10 +77,9 @@ config.module.rule('scss')
 	.use('postcss-loader')
 		.loader('postcss-loader')
 		.options({
-			config: {
-				path: process.env.POSTCSS_CONFIG || path.resolve(__dirname, 'postcss.config.js'),
-				ctx: { minify: ('production' === environment) },
-			},
+      postcssOptions: {
+        config: process.env.POSTCSS_CONFIG || path.resolve(__dirname, 'postcss.config.js'),
+      },
 		})
 		.end()
 	.use('sass-loader')

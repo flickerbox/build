@@ -116,7 +116,7 @@ module.exports = ({options}) => ({
     /**
      * http://cssnano.co/guides/optimisations/
      */
-    cssnano: !!options.minify && {
+    cssnano: !!('production' === environment) && {
       "autoprefixer": false,
       "calc": true,
       "colormin": true,
