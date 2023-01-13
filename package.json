@@ -1,6 +1,6 @@
 {
   "name": "@flickerbox/build",
-  "version": "21.1.5",
+  "version": "21.1.6",
   "description": "Flickerbox build module makes it easy to run webpack, babel, postcss, and more for a quality static resource build for your JS and CSS site assets.",
   "main": "index.js",
   "bin": {
